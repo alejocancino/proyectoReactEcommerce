@@ -1,23 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header/Header';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+let nombre = prompt("Cual es su nombre?")
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header></Header>
+      
+      <ItemListContainer textH1={`Bienvenido ${nombre}, gracias por visitarnos`}></ItemListContainer>
     </div>
   );
 }
