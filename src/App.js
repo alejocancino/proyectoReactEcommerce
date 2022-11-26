@@ -1,8 +1,13 @@
 import './App.css';
 import Header from './components/Header/Header';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-let nombre = prompt("Cual es su nombre?")
 
+let nombre  = prompt("Bienvenido! ¿Cual es su nombre?")
+
+
+if(nombre === null || nombre === ""){
+  window.location.reload();
+}
 function App() {
   return (
     <div>

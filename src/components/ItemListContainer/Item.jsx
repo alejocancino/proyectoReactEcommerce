@@ -5,10 +5,10 @@ const Item = (props) => {
     return (
     <div className="max-w-xs bg-white rounded-lg shadow-md dark:border-gray-700 m-20 hover:scale-105 m-auto">
         <a href="/">
-            <img className="m-auto fluid" src={img} alt="product image" />
+            <img className="m-auto fluid" src={img} alt="Product" />
         </a>
         <div>
-            <a href="#">
+            <a href="/">
                 <div className="flex items-center justify-between p-5 flex-col">
                     <h5 className="text-xl font-semibold tracking-tight text-gray-900 text-center">{title}</h5>
                     <p className="text-3xl font-ligth text-gray-900 text-center">${price}</p>
