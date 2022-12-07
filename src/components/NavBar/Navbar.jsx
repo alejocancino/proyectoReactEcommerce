@@ -21,7 +21,7 @@ const Navbar = () => {
                     {
                         Links.map((elemento)=> {
                             return(
-                            <li className='md:ml-8 text-xl mb-4 md:m-0' key={elemento.name}>
+                            <li className='md:ml-8 text-xl mb-4 md:m-0 hover:scale-105 transition' key={elemento.name}>
                                 <a href={elemento.ref} className="text-gray-800 hover:text-blue-600 duration-500 font-bold">{elemento.name}</a>
                             </li>
                             )
