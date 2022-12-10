@@ -1,25 +1,16 @@
-import React, { useState } from 'react'
 import Item from './Item'
 
-//IMPORT PROMESA
-import solicitarItems from '../services/mockServices.js'
-
-const ItemList = () => {
-
-  // CREACION DEL STATE PARA PODER RENDERIZAR LUEGO
-  const [products, setProducts] = useState([])
-
-  // LLAMAR A LA PROMISE, Y ALMACENARLA EN STATE
-  solicitarItems().then( (promiseProductos) => setProducts(promiseProductos) )
+const ItemList = (props) => {
 
   return (
     <>
-    {products.map( producto => (
+    {props.products.map( producto => (
         <Item 
+        id = {producto.id}
         key = {producto.id}
         price={producto.price} 
         title={producto.title} 
-        img={producto.img}>
+        image={producto.image}>
         </Item>
     ))}
     </>

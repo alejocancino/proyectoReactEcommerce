@@ -1,13 +1,15 @@
 import React from 'react';
 import CartWidget from './CartWidget';
+import { Link } from 'react-router-dom';
 import logo from "./logo.png";
 
 const Navbar = () => {
     let Links = [
-        {name: "Categorias", ref:"/"},
-        {name: "Coleccion", ref:"/"},
-        {name: "Asistencia", ref:"/"},
-        {name: "Contactanos", ref:"/"},
+        {name: "Inicio", ref:"/"},
+        // {name: "Categorias", ref:"/category",},
+        {name: "Joyas", ref:"/category/jewelery"},
+        {name: "Ropa de hombre", ref:"/category/men's clothing"},
+        {name: "Ropa de Mujer", ref:"/category/women's clothing"},
     ]
 
     return (
@@ -22,7 +24,8 @@ const Navbar = () => {
                         Links.map((elemento)=> {
                             return(
                             <li className='md:ml-8 text-xl mb-4 md:m-0 hover:scale-105 transition' key={elemento.name}>
-                                <a href={elemento.ref} className="text-gray-800 hover:text-blue-600 duration-500 font-bold">{elemento.name}</a>
+                                
+                                <Link to={elemento.ref} className="text-gray-800 hover:text-blue-600 duration-500 font-bold">{elemento.name}</Link>
                             </li>
                             )
                         })
