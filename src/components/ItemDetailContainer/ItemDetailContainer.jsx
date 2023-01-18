@@ -1,27 +1,41 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
+import LoaderButton from '../Button/LoaderButton.jsx'
+
 //IMPORT PROMESA
-import {getSingleItem} from '../services/mockServices.js'
+import { getSingleItem, getData } from '../services/firebase.js'
 import ItemDetail from './ItemDetail.jsx'
 
 import { useParams } from 'react-router-dom'
 
 
+
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState([])
 
-    let {idProducto} = useParams()
+    const [isLoading, setIsLoading] = useState(true)
 
-    useEffect( () => {
-        getSingleItem(idProducto).then( (response) => setProduct(response) )
-        .catch((error)=> {
-            alert("producto no encontrado")
-        })
-    }, [])
-    return (
-    <div className='m-auto'>
-        <ItemDetail product={product}></ItemDetail>
-    </div>
-    )
+    const { idProducto } = useParams()
+
+    async function getData() {
+        let response = await getSingleItem(idProducto)
+        setIsLoading(false)
+        setProduct(response)
     }
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+    if (isLoading) {
+        return <LoaderButton />
+    }
+
+    return (
+        <div className='mt-20 md:mt-0 md:pt-14 md:gap-20'>
+            <ItemDetail product={product}></ItemDetail>
+        </div>
+    )
+}
+
 
 export default ItemDetailContainer

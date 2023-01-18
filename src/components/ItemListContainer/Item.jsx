@@ -1,35 +1,36 @@
-import { BsCartPlus } from 'react-icons/bs'
+
 import ToggleButon from '../Button/ToggleButon';
-import Button from '../Button/Button';
+
 import { Link } from 'react-router-dom';
 
 const Item = (props) => {
-    const {price, title, id, image} = props;
+    const { price, title, id, image, discount, newProduct } = props;
     let urlDetail = `/item/${id}`
-    const addToCart = ( ) => {
-        console.log("Agregando al carrito")
-    }
+
 
     return (
-    <div className="max-w-xs bg-white rounded-lg shadow-md dark:border-gray-700 hover:scale-105 m-auto transition">
-        <div className=''>
-            <ToggleButon></ToggleButon>
-            <Link to={urlDetail}>
-                <img className="m-auto fluid w-max relative rounded-t-lg -top-14" src={image} alt="Product" />
-            </Link>
-        </div>
-        <div className='-top-8 relative'>
-            <Link to={urlDetail}>
-                <div className="flex items-center justify-between pb-5 flex-col">
-                <h5 className="text-xl font-semibold tracking-tight text-gray-900 text-center">{title}</h5>
-                <p className="text-3xl font-ligth text-gray-900 text-center">${price}</p>
-                </div>
-            </Link>
+        <div className=" bg-white rounded-lg shadow-md dark:border-gray-700 hover:scale-105 m-auto transition">
             <div>
-               <Button onClick={addToCart} text={"Agregar al carrito"} logo={BsCartPlus({size:"1.8rem"})}></Button>
+                <ToggleButon></ToggleButon>
+                <Link to={urlDetail}>
+                    <div className='w-2/3 m-auto'>
+                        <img className="m-auto fluid w-full relative rounded-t-lg -top-14 " src={image} alt="Product" />
+                    </div>
+                </Link>
+            </div>
+            <div className='-top-8 relative'>
+                {newProduct && <span className='bg-blue-300 p-1 rounded-md relative text-xs w-fit text-white left-2 -top-10'>NEW</span>}
+                <Link to={urlDetail}>
+                    <div className="flex items-center justify-between pb-5 flex-col">
+                        <h5 className="text-xl font-semibold tracking-tight text-gray-900 text-center px-2">{title}</h5>
+                        <div className='flex gap-2 flex-col-reverse md:flex-row mt-3'>
+                            <p className="text-3xl font-ligth text-gray-900 text-center">${price}</p>
+                            {discount && <p className="text-md  text-green-600 text-center">% {discount} off</p>}
+                        </div>
+                    </div>
+                </Link>
             </div>
         </div>
-    </div>
     )
 }
 

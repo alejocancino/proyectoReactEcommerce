@@ -1,16 +1,39 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import ItemCount from './ItemCount'
+import { Link } from 'react-router-dom'
+import { cartContext } from '../../storage/cartContext.jsx'
+
+const ItemDetail = ({ product }) => {
 
 
-const ItemDetail = (props) => {
+  const [amountCart, setAmountCart] = useState(null)
+  const { addToCart } = useContext(cartContext)
+
+
+  function handleAddCart(count) {
+    setAmountCart(count)
+    addToCart(product, count)
+    console.log(product, count)
+  }
 
   return (
-    <div className=' lg:flex justify-center m-10'>
-      <img alt={`Imagen de producto ${props.product.title}`} className='rounded-md m-auto w-2/3' src={props.product.image}></img>
-      <div className='flex gap-20 p-6 flex-col text-center'>
-        <h1 className='text-4xl md:text-5xl xl:text-7xl font-bold text-center'>{props.product.title}</h1>
-        <div className=''>
-        <h3 className='mb-20 font-bold text-5xl xl:text-6xl text-blue-600 text-left'>${props.product.price}</h3>
-        <p className='text-left text-3xl'>{props.product.description}</p>
+    <div>
+      <div className='md:flex md:flex-col'>
+        <div className='lg:flex md:gap-20 md:px-12'>
+          <img alt={`Imagen de producto ${product.title}`} className='hidden lg:flex md:w-1/3 lg:w-1/6 m-auto md:hover:scale-105 duration-700' src={product.image}></img>
+          <div className=' flex flex-col gap-6'>
+            <h1 className='text-4xl font-semibold text-gray-700 m-0 border-b-4 text-center border-blue-200 w-fit'>{product.title}</h1>
+            <img alt={`Imagen de producto ${product.title}`} className='lg:hidden w-44 m-auto md:hover:scale-105 duration-700' src={product.image}></img>
+            <h3 className='text-2xl md:text-5xl mb-5 font-semibold w-fit text-blue-700 hover:scale-110 duration-500 hover:text-blue-800 p-4 lg:mt-0'>${product.price}</h3>
+            <p className='text-xl text-center'>{product.description}</p>
+          </div>
+        </div>
+        <div className='relative justify-center mt-5 md:m-0 xl:-top-26'>
+
+          <ItemCount handleOnClick={handleAddCart}></ItemCount>
+          
+          {amountCart && <Link to={"/cart"}> <p className="m-auto p-2 border  hover:scale-105 hover:shadow-blue-700 duration-500 hover:-translate-y-1 rounded-md shadow-md w-fit">Ir al carrito</p></Link>}
+          
         </div>
       </div>
     </div>
