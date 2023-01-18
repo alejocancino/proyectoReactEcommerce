@@ -21,6 +21,7 @@ function CheckOutForm({ onCheckout }) {
 
   function onSubmit(evt) {
     evt.preventDefault();
+    
     setBuyerData({
       name: "",
       email: "",
@@ -51,7 +52,6 @@ function CheckOutForm({ onCheckout }) {
           title="Tel"
           onChange={handleInputChange}
         />
-
         <Button text="Crear orden" className="flex justify-center" onClick={onSubmit}></Button>
       </form>
     </div>

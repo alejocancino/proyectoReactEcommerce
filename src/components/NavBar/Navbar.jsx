@@ -10,7 +10,7 @@ const Navbar = () => {
         {name: "Joyas", ref:"/category/jewelery", id:3},
         {name: "Ropa de hombre", ref:"/category/men's clothing", id:4},
         {name: "Ropa de Mujer", ref:"/category/women's clothing", id:5},
-        {name: "Contacto", ref:"/Contact", id:6},
+        
     ]
 
     const [open, setOpen] = useState(false);
